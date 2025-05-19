@@ -14,7 +14,7 @@ type NewsMeta struct {
 	Source         string    `gorm:"not null"`
 	PublishedAt    *time.Time
 	Lang           string    `gorm:"size:2"`
-	Embedding      []float32 `gorm:"type:float8[]"` // временно
+	Embedding      []float32 `gorm:"type:float8[]"` // TODO: use VECTOR(384)
 	Status         string    `gorm:"default:NEW;not null"`
 	OriginalNewsID *uuid.UUID
 	CreatedAt      time.Time `gorm:"default:now()"`

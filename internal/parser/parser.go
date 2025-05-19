@@ -2,7 +2,6 @@ package parser
 
 import (
 	"encoding/xml"
-	"fmt"
 	"io"
 	"kitco-parser/pkg/utils"
 	"net/http"
@@ -59,6 +58,7 @@ func FetchKitcoNews() ([]ParsedNews, error) {
 	}
 
 	var result []ParsedNews
+	// TODO: remove slice
 	for _, item := range sitemap.URLs[:3] {
 		t, err := time.Parse(time.RFC3339, item.News.PubDate)
 		if err != nil {
@@ -73,8 +73,6 @@ func FetchKitcoNews() ([]ParsedNews, error) {
 			Lang:      item.News.Publication.Language,
 			Published: t,
 		})
-
-		fmt.Println(result)
 	}
 
 	return result, nil
